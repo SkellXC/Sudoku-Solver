@@ -63,10 +63,10 @@ done_button.grid(row=9, column=0, columnspan=9, pady=10)
 root.mainloop()
 
 # Print the 2D array after the GUI is closed
-print("Grid values:")
+#print("Grid values:")
 for row in grid_values:
     print(row)
-print(grid_values)
+#print(grid_values)
 def getBoard():
     return grid_values
 getBoard()
