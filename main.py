@@ -1,4 +1,6 @@
-method_of_entry = input("The default method for entering your sudoku board is by submitting a screenshot. Would you like to manually it in instead? If so, type 'yes'. Otherwise, press enter.\n")
+from time import time
+
+method_of_entry = input("The default method for entering your sudoku board is by submitting a screenshot (not yet done). Would you like to manually it in instead? If so, type 'yes'. Otherwise, press enter.\n")
 
 if method_of_entry.lower() == "yes":
 
@@ -7,18 +9,19 @@ if method_of_entry.lower() == "yes":
 
     board = gui.getBoard()
 else:
-    pass
-example_board = [
-    [7,8,0,4,0,0,1,2,0],
-    [6,0,0,0,7,5,0,0,9],
-    [0,0,0,6,0,1,0,7,8],
-    [0,0,7,0,4,0,2,6,0],
-    [0,0,1,0,5,0,9,3,0],
-    [9,0,4,0,6,0,0,0,5],
-    [0,7,0,3,0,0,0,1,2],
-    [1,2,0,0,0,7,4,0,0],
-    [0,4,9,2,0,6,0,0,7]
-]
+    
+
+    board = [
+        [7,8,0,4,0,0,1,2,0],
+        [6,0,0,0,7,5,0,0,9],
+        [0,0,0,6,0,1,0,7,8],
+        [0,0,7,0,4,0,2,6,0],
+        [0,0,1,0,5,0,9,3,0],
+        [9,0,4,0,6,0,0,0,5],
+        [0,7,0,3,0,0,0,1,2],
+        [1,2,0,0,0,7,4,0,0],
+        [0,4,9,2,0,6,0,0,7]
+    ]
 
 
 
@@ -102,9 +105,16 @@ def getEmpty(board):
     #print("Returning False at getEmpty!")
     #print("Complete!")
     return False
+
 print("Initial board:\n")
 print_board(board)
+print("Hard grids can take up to 15 seconds to solve.")
 #solutions(board,(6,4),5)
+start = time()
 solve(board)
+end = time()
 print("Solved board:\n")
 print_board(board)
+time = end-start
+
+print(f"Solved in {round(end-start,2)} seconds")
